@@ -1,0 +1,26 @@
+Project Report
+
+Title:
+Exporting Clock Cycle Count and Branch Status via UART
+
+Objective:
+The primary objective of this project is to develop a practical debug and validation setup for the Shakti C-Class RISC-V core implemented on FPGA. The system focuses on accurately counting the total number of clock cycles during program execution and monitoring the pipeline’s branch instructions to ensure correct branching behaviour. The captured data is transmitted in real-time to a host machine through a UART interface, where it is logged and analysed using a Python script. The recorded hardware results will be compared and validated against reference results generated using GDB during software simulation.
+
+Working:
+A dedicated hardware counter module is integrated into the RTL design to keep track of the clock cycles while the processor executes instructions. Simultaneously, specific branch signals are tapped within the pipeline to monitor whether branches are being correctly taken or not. These debug signals are encoded and sent out using a UART transmitter module, allowing continuous transfer of debug information from the FPGA to a connected host PC.
+
+On the host side, a Python script is used to receive the UART data stream, decode the clock cycle count and branch status, and store it for further analysis. The same program is run in a simulation environment using GDB, which allows step-by-step inspection of the program’s flow. By comparing the FPGA results with the detailed simulation log, we can verify that the hardware behaves as expected and identify any mismatches in branch handling or unexpected stalls.
+
+Expected Outcome:
+By the end of this project, the system will reliably export the processor’s clock cycle count and pipeline branch status during program execution. The captured debug data will be validated by comparing it to the detailed output from GDB in the software simulation flow. This ensures the hardware execution on FPGA matches the expected behaviour, providing confidence in the design’s functional correctness and performance.
+
+Tools Used:
+- Bluespec: For designing and modifying the RTL hardware modules.
+- UART Interface: For efficient and reliable hardware-to-host communication.
+- Python: For receiving, decoding, and logging debug data from UART.
+- GDB (GNU Debugger): For running step-by-step simulations and generating reference results for verification.
+
+Team Members:
+Team: CV-RV-25-30
+1. Sudarshan V  2023105063
+2. Hemapriyan   2023105545
